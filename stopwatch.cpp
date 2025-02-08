@@ -3,8 +3,7 @@
 Stopwatch::Stopwatch(QObject *parent)
     : QObject{parent}
 {
-    m, s, h = 0;
-    time = 0;
+
     timer = new QTimer(this);
 
 
@@ -63,6 +62,15 @@ QString Stopwatch::get_Lap()
 void Stopwatch::set_Lap()
 {
     lap++;
+    last_h = h - last_h;
+    last_m = m - last_m;
+    last_s = s - last_s;
+    last_time = time - last_time;
+}
+
+QString Stopwatch::get_TimeLastLape()
+{
+    return QString("%1:%2:%3:%4").arg(QString::number(last_h),QString::number(last_m),QString::number(last_s),QString::number(last_time));;
 }
 
 void Stopwatch::Clear()

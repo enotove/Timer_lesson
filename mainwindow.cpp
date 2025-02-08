@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->pb_Lap->setText(QString("Круг"));
     ui->pb_Lap->setEnabled(stopwath->get_Flag_Start());
     ui->pb_Clear->setText(QString("Очистить"));
-    connect(stopwath->timer, SIGNAL(timeout()), this, SLOT(timerWork()));
+    connect(stopwath->timer, &QTimer::timeout, this, &MainWindow::timerWork);
 
 
 
@@ -28,7 +28,7 @@ MainWindow::~MainWindow()
 void MainWindow::on_pb_Lap_clicked()
 {
     stopwath->set_Lap();
-    ui->te_logTimer->append(QString("Круг %1: %2").arg(stopwath->get_Lap(), stopwath->get_Time()));
+    ui->te_logTimer->append(QString("Круг %1: %2").arg(stopwath->get_Lap(), stopwath->get_TimeLastLape()));
 }
 
 
@@ -46,6 +46,7 @@ void MainWindow::on_pb_Start_clicked()
     stopwath->set_Flag_Start();
     if(stopwath->get_Flag_Start() == true)
     {
+
         stopwath->timer->start(100);
         ui->pb_Lap->setEnabled(stopwath->get_Flag_Start());
         ui->pb_Start->setText(QString("Стоп"));

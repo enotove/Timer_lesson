@@ -16,19 +16,25 @@ public:
     void set_Time();
     QString get_Lap();
     void set_Lap();
+    QString get_TimeLastLape();
 public slots:
     void Clear();
 
 
 signals:
-    void sig_stopTimer();
+    void sig_Timer();
     void sig_lapTimer();
     void sig_clearTimer();
 private:
-    uint h;
-    uint m;
-    uint s;
-    uint time;
+    uint h = 0;
+    uint m = 0;
+    uint s = 0;
+    uint time = 0;
+
+    uint last_h = 0;
+    uint last_m = 0;
+    uint last_s = 0;
+    uint last_time = 0;
     bool flag_start = false;
     uint lap = 0;
 };
