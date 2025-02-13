@@ -31,10 +31,14 @@ private:
     uint s = 0;
     uint time = 0;
 
-    uint last_h = 0;
-    uint last_m = 0;
     uint last_s = 0;
+    uint last_m = 0;
+    uint last_h = 0;
     uint last_time = 0;
+    uint lap_s = 0;
+    uint lap_m = 0;
+    uint lap_h = 0;
+    uint lap_time = 0;
     bool flag_start = false;
     uint lap = 0;
 };

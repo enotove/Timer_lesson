@@ -62,15 +62,20 @@ QString Stopwatch::get_Lap()
 void Stopwatch::set_Lap()
 {
     lap++;
-    last_h = h - last_h;
-    last_m = m - last_m;
-    last_s = s - last_s;
-    last_time = time - last_time;
+    lap_h = h - last_h;
+    lap_m = m - last_m;
+    lap_s = s - last_s;
+    lap_time = time >= last_time ?time - last_time : last_time - time;
+    last_h = h;
+    last_m = m;
+    last_s = s;
+    last_time = time;
+
 }
 
 QString Stopwatch::get_TimeLastLape()
 {
-    return QString("%1:%2:%3:%4").arg(QString::number(last_h),QString::number(last_m),QString::number(last_s),QString::number(last_time));;
+    return QString("%1:%2:%3:%4").arg(QString::number(lap_h),QString::number(lap_m),QString::number(lap_s),QString::number(lap_time));;
 }
 
 void Stopwatch::Clear()
